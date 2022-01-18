@@ -4,9 +4,11 @@ import conctactList from '../data/contacts.json';
 
 function App() {
 
-  const [data, setdata] = useState(conctactList);
+  const [data, setData] = useState(conctactList);
 
-  console.log(data);
+  const [name, setName] = useState('');
+  const [counselor, setCounselor] = useState('');
+  const [speciality, setSpeciality] = useState('');
 
   const htmlConctact = data.map(contact => (
     <tr>
@@ -16,17 +18,52 @@ function App() {
     </tr>
   ));
 
+  const handleInputName = (ev) => {
+    setName(ev.target.value);
+  }
+  const handleInputCounselor = (ev) => {
+    setCounselor(ev.target.value);
+  }
+  const handleInputSpeciality = (ev) => {
+    setSpeciality(ev.target.value);
+  }
+
   return (
     <div>
       <h1>Adalabers</h1>
       <table>
-        <tr>
-          <th>Nombre</th>
-          <th>Tutora</th>
-          <th>Especialidad</th>
-        </tr>
-        {htmlConctact}
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tutora</th>
+            <th>Especialidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          {htmlConctact}
+        </tbody>
       </table>
+      <h1>Añadir una Adalaber</h1>
+      <form>
+        <label htmlFor='name'>Nombre</label>
+        <input
+          type='text'
+          value={name}
+          onChange={handleInputName}
+        />
+        <label htmlFor='counselor'>Tutora</label>
+        <input
+          type='text'
+          value={counselor}
+          onChange={handleInputCounselor}
+        />
+        <label htmlFor='speciality'>Especialidad</label>
+        <input
+          type='text'
+          value={speciality}
+          onChange={handleInputSpeciality}
+        />
+      </form>
     </div>
   );
 }
