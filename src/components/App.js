@@ -22,11 +22,11 @@ function App() {
   }, []);
 
   const htmlConctact = data.map(contact => (
-    <tr>
+    <tr key={contact.id}>
       <td>{contact.name}</td>
       <td>{contact.counselor}</td>
       <td>{contact.speciality}</td>
-    </tr>
+    </tr >
   ));
 
   const handleInputName = (ev) => {
@@ -48,6 +48,9 @@ function App() {
       speciality: speciality,
     };
     setData([...data, newContact]);
+    setName('');
+    setCounselor('');
+    setSpeciality('');
   }
 
   return (
