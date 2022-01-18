@@ -24,13 +24,19 @@ function App() {
       });
   }, []);
 
-  const htmlConctact = data.map(contact => (
-    <tr key={contact.id}>
-      <td>{contact.name}</td>
-      <td>{contact.counselor}</td>
-      <td>{contact.speciality}</td>
-    </tr >
-  ));
+  const htmlConctact = data
+
+    .filter(
+      (contact) =>
+        contact.name.toLocaleLowerCase().includes(filterName.toLocaleLowerCase())
+    )
+    .map(contact => (
+      <tr key={contact.id}>
+        <td>{contact.name}</td>
+        <td>{contact.counselor}</td>
+        <td>{contact.speciality}</td>
+      </tr >
+    ));
 
   const handleInputName = (ev) => {
     setName(ev.target.value);
