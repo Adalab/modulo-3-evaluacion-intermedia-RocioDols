@@ -28,6 +28,17 @@ function App() {
     setSpeciality(ev.target.value);
   }
 
+  const handleClick = (ev) => {
+    ev.preventDefault();
+
+    const newContact = {
+      "name": "Rocio",
+      "counselor": "Dayana",
+      "speciality": "Bulma CSS",
+    };
+    setData([...data, newContact]);
+  }
+
   return (
     <div>
       <h1>Adalabers</h1>
@@ -63,6 +74,7 @@ function App() {
           value={speciality}
           onChange={handleInputSpeciality}
         />
+        <input type="submit" value="Añadir una nueva Adalaber" onClick={handleClick} />
       </form>
     </div>
   );
