@@ -1,14 +1,25 @@
 import '../styles/App.scss';
-import { useState } from 'react';
-import conctactList from '../data/contacts.json';
+import { useState, useEffect } from 'react';
+// import conctactList from '../data/contacts.json';
 
 function App() {
 
-  const [data, setData] = useState(conctactList);
+  const [data, setData] = useState([]);
 
   const [name, setName] = useState('');
   const [counselor, setCounselor] = useState('');
   const [speciality, setSpeciality] = useState('');
+
+  useEffect(() => {
+    // Dentro de useEffect llamamos al API
+    fetch('https://beta.adalab.es/pw-recursos/apis/adalabers-v1/promo-patata.json')
+      .then(response => response.json())
+      .then(responseData => {
+        // Cuando el API responde guardamos los datos en el estado para que se re-renderice el componente
+        console.log(responseData);
+        setData(responseData.results);
+      });
+  }, []);
 
   const htmlConctact = data.map(contact => (
     <tr>
