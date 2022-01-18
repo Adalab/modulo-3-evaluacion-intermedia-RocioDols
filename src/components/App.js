@@ -32,9 +32,9 @@ function App() {
     ev.preventDefault();
 
     const newContact = {
-      "name": "Rocio",
-      "counselor": "Dayana",
-      "speciality": "Bulma CSS",
+      name: name,
+      counselor: counselor,
+      speciality: speciality,
     };
     setData([...data, newContact]);
   }
