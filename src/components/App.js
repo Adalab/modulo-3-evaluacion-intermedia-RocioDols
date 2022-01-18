@@ -11,7 +11,8 @@ function App() {
   const [speciality, setSpeciality] = useState('');
   //estado paar filtro
   const [filterName, setFilterName] = useState('');
-
+  //estado para filtro select
+  const [filterSelect, setFilterSelect] = useState('');
 
   useEffect(() => {
     // Dentro de useEffect llamamos al API
@@ -29,6 +30,11 @@ function App() {
     .filter(
       (contact) =>
         contact.name.toLocaleLowerCase().includes(filterName.toLocaleLowerCase())
+    )
+    .filter(
+      (contact) =>
+        contact.counselor.toLocaleLowerCase().includes(filterSelect.toLocaleLowerCase()
+        )
     )
     .map(contact => (
       <tr key={contact.id}>
@@ -50,6 +56,10 @@ function App() {
   //Función manejadora para el filtro
   const handleFilterName = (ev) => {
     setFilterName(ev.target.value);
+  }
+  //Función manejadora para el filtroSelect
+  const handleFilterSelect = (ev) => {
+    setFilterSelect(ev.target.value);
   }
 
   const handleClick = (ev) => {
@@ -81,6 +91,18 @@ function App() {
             onChange={handleFilterName}
             value={filterName}
           />
+          <select
+            className=""
+            value={filterSelect}
+            onChange={handleFilterSelect}
+          >
+            <option value="choosse">Escoge una opción</option>
+            <option value="Yanelis">Yanelis</option>
+            <option value="Dayana">Dayana</option>
+            <option value="Ivan">Iván</option>
+
+          </select>
+
         </form>
 
         <table>
