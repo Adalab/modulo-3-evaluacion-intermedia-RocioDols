@@ -10,9 +10,9 @@ function App() {
 
   const htmlConctact = data.map(contact => (
     <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
+      <td>{contact.name}</td>
+      <td>{contact.counselor}</td>
+      <td>{contact.speciality}</td>
     </tr>
   ));
 
