@@ -1,5 +1,6 @@
 import '../styles/App.scss';
 import { useState, useEffect } from 'react';
+import getApiData from '../service/api';
 // import conctactList from '../data/contacts.json';
 
 function App() {
@@ -16,13 +17,9 @@ function App() {
 
   useEffect(() => {
     // Dentro de useEffect llamamos al API
-    fetch('https://beta.adalab.es/pw-recursos/apis/adalabers-v1/promo-patata.json')
-      .then(response => response.json())
-      .then(responseData => {
-        // Cuando el API responde guardamos los datos en el estado para que se re-renderice el componente
-        console.log(responseData);
-        setData(responseData.results);
-      });
+    getApiData().then((apiData) => {
+      setData(apiData)
+    });
   }, []);
 
   const htmlConctact = data
@@ -96,7 +93,7 @@ function App() {
             value={filterSelect}
             onChange={handleFilterSelect}
           >
-            <option value="choosse">Escoge una opción</option>
+            <option value="">Escoge una opción</option>
             <option value="Yanelis">Yanelis</option>
             <option value="Dayana">Dayana</option>
             <option value="Ivan">Iván</option>
