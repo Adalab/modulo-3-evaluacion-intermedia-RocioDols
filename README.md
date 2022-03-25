@@ -82,7 +82,7 @@ No te vamos a decir cómo debes poner bonita tu web porque tienes más estilo y 
 
 **Diseño aproximado**
 
-<img src="./src/images/design.png" alt="Design" height="400"/>
+[![design.png](https://i.postimg.cc/Prx93Q5H/design.png)](https://postimg.cc/Rqkgqftp)
 
 ---
 
